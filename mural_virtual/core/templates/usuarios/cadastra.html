@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastra-se</title>
+</head>
+<body>
+    <h1>CADASTRA-SE</h1>
+    {% if form.errors %}
+    <div style="color: red;">
+        <strong>Erros no formulário:</strong>
+        <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <form method="post" action="{% url 'cadastra' %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_nome">Nome:</label>
+            {{ form.username }}
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="id_tipo_usuario">Tipo de Usuário:</label>
+            {{ form.tipo_usuario }}
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="id_matricula">Matrícula:</label>
+            {{ form.matricula }}
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="id_password1">Senha:</label>
+            {{ form.password1 }}
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="id_password2">Confirme a senha:</label>
+            {{ form.password2 }}
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="id_curso">Curso (Opcional):</label>
+            {{ form.curso }}
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Cadastra-se</button>
+    </form>
+</body>
+</html>

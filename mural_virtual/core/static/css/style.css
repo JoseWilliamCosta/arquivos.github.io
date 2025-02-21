@@ -1,0 +1,148 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2d3e50;
+    color: white;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header ul li {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 7px;
+    margin-left: 15px;
+}
+
+header ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+header ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Mensagens */
+header .messages {
+    padding: 10px;
+    margin: auto 0;
+    border-radius: 5px;
+}
+
+header .success {
+    color: #000000;
+}
+
+header .error {
+    background-color: #ffffff;
+}
+
+/* Main */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+main h1 {
+    text-align: center;
+    color: #333;
+}
+
+main div {
+    margin-top: 20px;
+}
+
+main div ul {
+    padding: 0;
+    list-style: none;
+    display: flex; /* Usamos flexbox para alinhar as notas lado a lado */
+    flex-wrap: wrap; /* Permite que as notas que não cabem na linha se movam para a próxima linha */
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+main div ul li {
+    flex: 1 1 calc(33.333% - 20px); /* Cada nota ocupa 1/3 da largura do container, com uma margem entre elas */
+    padding: 15px;
+    background-color: #FFF9C4;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Garante que o padding não afete a largura */
+    overflow: hidden; /* Impede que o conteúdo ultrapasse os limites da nota */
+    max-width: 100%; /* Garante que a largura máxima não ultrapasse 100% do container */
+}
+
+/* Limitar o texto dentro da nota */
+main div ul li h3, 
+main div ul li p {
+    word-wrap: break-word; /* Quebra o texto longo dentro do container */
+    overflow-wrap: break-word; /* Para garantir compatibilidade */
+    text-overflow: ellipsis; /* Se o texto for muito longo, ele será truncado com "..." */
+}
+
+main div ul li h3 {
+    margin-top: 0;
+    color: #333;
+    white-space: nowrap; /* Impede a quebra de linha no título */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Trunca o título longo */
+}
+
+main div ul li p {
+    margin: 5px 0;
+    color: #555;
+}
+
+main div ul li p strong {
+    color: #333;
+}
+
+main div ul li em {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Adicionando responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    header ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    main div ul li {
+        flex: 1 1 calc(50% - 20px); /* Em telas menores, as notas ocupam metade da largura */
+    }
+}
+
+@media (max-width: 480px) {
+    main div ul li {
+        flex: 1 1 100%; /* Em telas muito pequenas, as notas ocupam a largura total */
+    }
+}

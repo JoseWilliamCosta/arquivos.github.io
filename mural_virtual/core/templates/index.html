@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Inicio do Mural</title>
+</head>
+<body>
+    <header>
+    <h1>Inicio do Mural</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        <ul>
+            {% if not request.user.is_authenticated %}
+                <!-- Só aparece para usuários deslogados -->
+                <li><a href="{% url 'cadastra' %}">Cadastrar-se</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% else %}
+                <!-- Só aparece para usuários logados -->
+                <li><a href="{% url 'criar_nota' %}">Nova nota</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </header>
+
+    <main>
+        <h1>NOTAS DO MURAL</h1>
+        <div>
+                {% block content %}
+
+            {% if notas %}
+                <ul>
+                    {% for nota in notas %}
+                        <li>
+                            <h3>{{ nota.titulo }}</h3>
+                            <p>{{ nota.descricao }}</p>
+                            <p><strong>Categoria:</strong> {{ nota.categoria }}</p>
+                            <p><strong>Criado por:</strong> {{ nota.usuario.username }} ({{ nota.usuario.get_tipo_usuario_display }})</p>
+                            <p><em>Publicado em: {{ nota.data_publicacao }}</em></p>
+                            {% if request.user == nota.usuario or request.user.is_superuser %}
+                            <a href="{% url 'criar_nota' nota.id %}">Editar</a>
+                            <a href="{% url 'excluir_nota' nota.id %}">Excluir</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Não há notas cadastradas ainda.</p>
+            {% endif %}
+
+            {% endblock %}
+
+        </div>
+    </main>
+
+
+</body>
+</html>
