@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario, Nota
 
 class UsuarioCreationForm(UserCreationForm):
-    tipo_usuario = forms.ChoiceField(choices=[('aluno', 'Aluno'), ('professor', 'Professor'), ('admin', 'Administrador')])
+    tipo_usuario = forms.ChoiceField(choices=[('aluno', 'Aluno'), ('professor', 'Professor'),])
     matricula = forms.CharField(label="Matrícula", max_length=50)
     email = forms.EmailField(label="Email")
     curso = forms.CharField(label="Curso (Opcional)", max_length=100, required=False)
@@ -19,9 +19,9 @@ class UsuarioCreationForm(UserCreationForm):
 class NotaForm(forms.ModelForm):
     class Meta:
         model = Nota
-        fields = ['titulo', 'descricao', 'categoria']
-        widgets = {
-            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Título'}),
-            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição'}),
-            'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoria (opcional)'}),
-        }
+        fields = ['titulo', 'descricao', 'categoria', 'imagem', 'arquivo']
+
+    def __init__(self, *args, **kwargs):
+        super(NotaForm, self).__init__(*args, **kwargs)
+        self.fields['imagem'].required = False
+        self.fields['arquivo'].required = False

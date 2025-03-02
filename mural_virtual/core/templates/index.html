@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Inicio do Mural</title>
+    <script src="{% static 'js/style.js' %}"></script>
 </head>
 <body>
     <header>
@@ -40,7 +41,24 @@
                     {% for nota in notas %}
                         <li>
                             <h3>{{ nota.titulo }}</h3>
-                            <p>{{ nota.descricao }}</p>
+                            {% if nota.imagem %}
+                                <img src="{{ nota.imagem.url }}" alt="Imagem da nota" style="max-width: 300px; height: auto;">
+                            {% endif %}
+                            <p id="resumo-{{ nota.id }}">
+                                {{ nota.descricao|slice:":280" }}{% if nota.descricao|length > 280 %}...{% endif %}
+                            </p>
+                            
+                            <!-- Texto completo (escondido inicialmente) -->
+                            <p id="completo-{{ nota.id }}" class="hidden">
+                                {{ nota.descricao }}
+                            </p>
+                            
+                            {% if nota.descricao|length > 280 %}
+                                <button onclick="toggleTexto('{{ nota.id }}')" id="btn-{{ nota.id }}">Ver mais</button>
+                            {% endif %}
+                            {% if nota.arquivo %}
+                                <p><a href="{{ nota.arquivo.url }}" target="_blank">📎 Baixar arquivo</a></p>
+                            {% endif %}
                             <p><strong>Categoria:</strong> {{ nota.categoria }}</p>
                             <p><strong>Criado por:</strong> {{ nota.usuario.username }} ({{ nota.usuario.get_tipo_usuario_display }})</p>
                             <p><em>Publicado em: {{ nota.data_publicacao }}</em></p>

@@ -25,6 +25,8 @@ class Nota(models.Model):
     descricao = models.TextField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
     categoria = models.CharField(max_length=100, blank=True, null=True)
+    imagem = models.ImageField(upload_to='imagens_notas/', blank=True, null=True)
+    arquivo = models.FileField(upload_to='arquivos_notas/', blank=True, null=True)
 
     def __str__(self):
         return self.titulo
