@@ -10,6 +10,11 @@ urlpatterns = [
     # ==== LOGIN ====
     path('login/', user_login, name='login'),
 
+    # ==== PERFIL ====
+    path('perfil/<int:usuario_id>/', perfil, name='perfil'),
+    path('editar_perfil/', editar_perfil, name='editar_perfil'),
+    #path('trocar_senha/', trocar_senha, name='trocar_senha'),
+
     # ==== LOGOUT ====
     path('logout/', user_logout, name='logout'),
 

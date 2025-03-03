@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
-from .forms import UsuarioCreationForm, NotaForm
+from .forms import UsuarioCreationForm, NotaForm, UsuarioUpdateForm
 from .models import Usuario, Nota
 from django.contrib import messages
 from rest_framework import status
@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import UsuarioSerializer, NotaSerializer
+from django.contrib.auth.decorators import login_required
+
 
 '''
 
@@ -92,11 +94,47 @@ def excluir_nota_api(request, nota_id):
 
 '''
 
+
+
+
+
 def index(request):
     notas = Nota.objects.all().order_by('-data_publicacao')  # Exibe todas as notas, mais recentes primeiro
     return render(request, 'index.html', {'notas': notas})
 
 
+'''
+============= EDITAR USER ==============
+'''
+@login_required
+def editar_perfil(request):
+    user = request.user  # Obtém o usuário logado
+    
+    if request.method == "POST":
+        form =UsuarioUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Perfil atualizado com sucesso!")
+            return redirect('perfil', usuario_id=user.id)  # Passando o usuario_id
+    else:
+        form = UsuarioUpdateForm(instance=user)  # Preenche com dados atuais
+
+    return render(request, "usuarios/editar_perfil.html", {"form": form})
+
+'''
+============= TROCA SENHA ===============
+'''
+
+
+
+'''
+============= PERFIL ==============
+'''
+
+def perfil(request, usuario_id):
+    user = get_object_or_404(Usuario, id=usuario_id)  # Busca o usuário ou retorna 404
+    notas = Nota.objects.filter(usuario=user)  # Filtra as notas do usuário
+    return render(request, 'usuarios/perfil.html', {'user': user, 'notas': notas})
 
 '''
 
@@ -152,7 +190,7 @@ def user_login(request):
 '''
 def user_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
 
 
 '''

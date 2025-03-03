@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar-Perfil</title>
+</head>
+<body>
+    <h2>Editar Perfil</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="{{ form.username.id_for_label }}">Nome:</label>
+        {{ form.username }}
+        <br/>
+
+        <label for="{{ form.tipo_usuario.id_for_label }}">Tipo de Usuário:</label>
+        {{ form.tipo_usuario }}
+        <br/>
+
+        <label for="{{ form.curso.id_for_label }}">Curso:</label>
+        {{ form.curso }}
+        <br/>
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+    
+    
+</body>
+</html>

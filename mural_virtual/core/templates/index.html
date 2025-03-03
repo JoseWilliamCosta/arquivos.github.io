@@ -25,6 +25,7 @@
                 <li><a href="{% url 'login' %}">Login</a></li>
             {% else %}
                 <!-- Só aparece para usuários logados -->
+                <li> <a href="{% url 'perfil' request.user.id %}">Perfil</a></li>
                 <li><a href="{% url 'criar_nota' %}">Nova nota</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% endif %}

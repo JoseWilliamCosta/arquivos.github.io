@@ -1,6 +1,20 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from .models import Usuario, Nota
+
+
+# edita dados do usuario
+class UsuarioUpdateForm(forms.ModelForm):
+    username = forms.CharField(label="NOVO Nome de Usuário", max_length=100)
+    tipo_usuario = forms.ChoiceField(choices=[('aluno', 'Aluno'), ('professor', 'Professor'),])
+    curso = forms.CharField(label="Curso (Opcional)", max_length=100, required=False)
+
+    class Meta:
+        model = Usuario
+        fields = ['username', 'tipo_usuario', 'curso']
+        
+
+
 
 class UsuarioCreationForm(UserCreationForm):
     tipo_usuario = forms.ChoiceField(choices=[('aluno', 'Aluno'), ('professor', 'Professor'),])

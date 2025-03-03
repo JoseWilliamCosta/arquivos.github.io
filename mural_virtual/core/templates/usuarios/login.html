@@ -9,8 +9,10 @@
     <h1>LOGIN</h1>
     <form method="post">
         {% csrf_token %}
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="senha" placeholder="Senha" required>
+        
+        <p>Email: <input type="email" name="email" placeholder="Email" required></p> 
+        
+        <p>Senha: <input type="password" name="senha" placeholder="Senha" required></p>
         <button type="submit">Entrar</button>
     </form>
 </body>
