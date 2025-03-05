@@ -4,11 +4,10 @@ from .models import Usuario, Nota
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ['id', 'username', 'email', 'first_name', 'last_name']
-
+        fields = ['id', 'username', 'email', 'tipo_usuario', 'matricula', 'curso']
 class NotaSerializer(serializers.ModelSerializer):
-    usuario = UsuarioSerializer(read_only=True)  # Exibe informações do usuário na resposta
+    usuario = serializers.StringRelatedField()  # Exibe o nome do usuário em vez do ID
 
     class Meta:
         model = Nota
-        fields = ['id', 'titulo', 'conteudo', 'data_publicacao', 'usuario']
+        fields = ['id', 'usuario', 'titulo', 'descricao', 'data_publicacao', 'categoria', 'imagem', 'arquivo']

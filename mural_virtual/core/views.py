@@ -94,13 +94,15 @@ def excluir_nota_api(request, nota_id):
 
 '''
 
-
-
-
-
 def index(request):
     notas = Nota.objects.all().order_by('-data_publicacao')  # Exibe todas as notas, mais recentes primeiro
     return render(request, 'index.html', {'notas': notas})
+
+
+
+
+
+
 
 
 '''

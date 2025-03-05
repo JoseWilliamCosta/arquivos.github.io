@@ -3,11 +3,11 @@ from .views import *
 
 
 urlpatterns = [
-    path('notas/', index_api, name='index_api'),
-    path('cadastrar/', cadastra_api, name='cadastra_api'),
-    path('login/', user_login_api, name='user_login_api'),
-    path('logout/', user_logout_api, name='user_logout_api'),
-    path('notas/criar/', criar_nota_api, name='criar_nota_api'),
-    path('notas/editar/<int:nota_id>/', editar_nota_api, name='editar_nota_api'),
-    path('notas/excluir/<int:nota_id>/', excluir_nota_api, name='excluir_nota_api'),
+    path('notas/', index_api, name='notas'),
+    path('cadastrar/', cadastra_api, name='cadastrar'),
+    path('login/', user_login_api, name='login'),
+    path('logout/', user_logout_api, name='logout'),
+    path('notas/criar/', criar_nota_api, name='nota'),
+    path('notas/editar/<int:nota_id>/', editar_nota_api, name='editar_nota'),
+    path('notas/excluir/<int:nota_id>/', excluir_nota_api, name='excluir_nota'),
 ]
