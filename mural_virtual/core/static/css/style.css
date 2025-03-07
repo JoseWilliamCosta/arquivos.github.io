@@ -1,46 +1,59 @@
-/* Estilos gerais */
+
+:root {
+    --ver-color: #91da31;
+    --cinza-color: #404143;
+    --preto-color: #1d1c1c;
+    --cinza-claro-color: #f5c6cb;
+    --branco-color: #fff;
+    --cinza-fundo-color: #f4f4f4;
+    --cinza-texto-color: #333;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2d3e50;
+    background-color: var(--preto-color);
     color: white;
-    padding: 20px;
+    padding: 15px;
 }
 
 header h1 {
-    margin: 0;
+    margin-bottom: 10px;
     font-size: 24px;
+    margin-left: 5%;
 }
-
 header ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    margin-right: 5%;
 }
-
-header ul li {
-    background-color: #f4f4f4;
+header ul li a {
+    background-color: var(--ver-color);
     border-radius: 8px;
     padding: 7px;
     margin-left: 15px;
-}
-
-header ul li a {
-    color: rgb(0, 0, 0);
+    color: var(--branco-color);
     text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 15px;
 }
 
 header ul li a:hover {
     text-decoration: underline;
+    text-decoration: none;
+    color: var(--branco-color);
+    background-color: var(--cinza-color);
+    transition: background-color 0.3s ease;
 }
 
 /* Mensagens */
@@ -81,13 +94,13 @@ main div ul {
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
     gap: 20px;
 }
 
 main div ul li {
-    width: 100%; /* Ocupará a largura definida pelo grid */
-    max-width: 400px; /* Limita o tamanho máximo */
+    width: 100%; 
+    max-width: 400px;
     padding: 15px;
     background-color: #FFF9C4;
     border-radius: 8px;
@@ -96,20 +109,20 @@ main div ul li {
     overflow: hidden;
 }
 
-/* Limitar o texto dentro da nota */
+
 main div ul li h3, 
 main div ul li p {
-    word-wrap: break-word; /* Quebra o texto longo dentro do container */
-    overflow-wrap: break-word; /* Para garantir compatibilidade */
-    text-overflow: ellipsis; /* Se o texto for muito longo, ele será truncado com "..." */
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    text-overflow: ellipsis; 
 }
 
 main div ul li h3 {
     margin-top: 0;
     color: #333;
-    white-space: nowrap; /* Impede a quebra de linha no título */
+    white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; /* Trunca o título longo */
+    text-overflow: ellipsis; 
 }
 
 main div ul li p {
@@ -125,8 +138,6 @@ main div ul li em {
     font-size: 0.9em;
     color: #888;
 }
-/* Botão do ver mais */
-
 
 .hidden {
     display: none;
@@ -168,6 +179,6 @@ button:hover {
 
 @media (max-width: 480px) {
     main div ul {
-        grid-template-columns: 1fr; /* Uma nota por linha em telas pequenas */
+        grid-template-columns: 1fr; 
     }
 }

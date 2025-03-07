@@ -1,0 +1,150 @@
+:root {
+    --ver-color: #91da31;
+    --cinza-color: #404143;
+    --preto-color: #1d1c1c;
+    --cinza-claro-color: #f5c6cb;
+    --branco-color: #fff;
+    --cinza-fundo-color: #f4f4f4;
+    --cinza-texto-color: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--branco-color);
+    color: var(--cinza-texto-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: var(--branco-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 35px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--cinza-texto-color);
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: var(--cinza-claro-color);
+    background-color: var(--preto-color);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 5px;
+
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    padding: 10px;
+    border: 0.2px solid var(--cinza-color);
+    border-radius: 10px;
+    font-size: 14px;
+    width: 95%;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+button {
+    background-color: var(--ver-color);
+    color: var(--branco-color);
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: 50%;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: var(--cinza-color);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    h1 {
+        color: var(--cinza-texto-color);
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 900;
+    }
+    .container {
+        background-color: var(--branco-color);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 35px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    button {
+        background-color: var(--ver-color);
+        color: var(--branco-color);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        width: 80%;
+        margin-top: 15px;
+    }
+    
+    
+}
+
