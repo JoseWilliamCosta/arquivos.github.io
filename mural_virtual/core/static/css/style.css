@@ -19,10 +19,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--preto-color);
-    color: white;
     padding: 15px;
 }
+
+header hr {
+    border: none;
+    border-top: 2px solid yellowgreen;
+    width: 100%;
+    margin-top: 6%;
+    left: 0%;
+    position: absolute;
+   
+    
+}
+
 
 header h1 {
     margin-bottom: 10px;
