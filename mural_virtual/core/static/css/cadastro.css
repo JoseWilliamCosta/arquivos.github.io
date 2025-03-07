@@ -6,11 +6,12 @@
     --branco-color: #fff;
     --cinza-fundo-color: #f4f4f4;
     --cinza-texto-color: #333;
+    --cinza-fraco-color: #656565;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--cinza-color);
+    background-color: var(--preto-color);
     color: var(--cinza-texto-color);
     margin: 0;
     padding: 0;
@@ -47,13 +48,11 @@ header h1 {
     color: var(--branco-color);
 }
 
-
-
 .container {
     background-color: var(--cinza-color);
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 2px 2px 6px 6px rgba(55, 57, 55, 0.442);
+    box-shadow: 2px 4px 6px 6px rgba(40, 255, 62, 0.518);
     width: 30%;
     text-align: center;
     margin-top: 80px; 
@@ -102,6 +101,7 @@ select {
     padding: 8px;
     border: 0.2px solid var(--cinza-color);
     border-radius: 5px;
+    border:none;
     font-size: 12px;
     width: 95%;
 }
@@ -112,16 +112,17 @@ select {
 
 button {
     background-color: var(--ver-color);
-    color: var(--preto-color);
+    color: var(--cinza-fundo-color);
     border: none;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 400;
     transition: background-color 0.3s ease;
     width: 50%;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 button:hover {

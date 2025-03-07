@@ -24,7 +24,7 @@ body {
     background-color: var(--cinza-color);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 6px 4px 15px rgba(40, 255, 62, 0.518);
+    box-shadow: 2px 4px 6px 6px rgba(40, 255, 62, 0.518);
     width: 25%;
     height: 60%;
   
@@ -33,9 +33,10 @@ body {
 
 h1 {
     color: var(--branco-color);
-    margin-bottom: 20px;
-    font-weight: bolder;
-    font-size: 35px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 15px;
 }
 
 form {
@@ -66,8 +67,8 @@ button {
     background-color: var(--ver-color);
     color: var(--branco-color);
     border: none;
-    padding: 12px;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;

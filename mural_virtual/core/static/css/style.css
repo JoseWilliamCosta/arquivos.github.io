@@ -11,8 +11,10 @@
 
 body {
     font-family: Arial, sans-serif;
+    background-color: var(--preto-color);
     margin: 0;
     padding: 0;
+
 }
 
 header {
@@ -38,6 +40,7 @@ header h1 {
     margin-bottom: 10px;
     font-size: 24px;
     margin-left: 5%;
+    color: var(--branco-color);
 }
 header ul {
     list-style: none;
@@ -86,14 +89,14 @@ main {
     padding: 20px;
     max-width: 100%;
     margin: 0 auto;
-    background-color: #f4f4f4;
-    border-radius: 8px;
+    background-color: var(--cinza-color);
+ 
     align-items: center;
 }
 
 main h1 {
     text-align: center;
-    color: #333;
+    color:var(--branco-color);
 }
 
 main div {
