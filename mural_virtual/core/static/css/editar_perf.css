@@ -1,0 +1,116 @@
+:root {
+    --verde-color: #91da31;
+    --cinza-color: #404143;
+    --preto-color: #1d1c1c;
+    --branco-color: #fff;
+    --cinza-fundo-color: #121212;
+    --cinza-texto-color: #ddd;
+    --borda-card: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cinza-fundo-color);
+    color: var(--cinza-texto-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.card {
+    background-color: var(--preto-color);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.452);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: none;
+}
+
+h2 {
+    color: var(--verde-color);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px; 
+}
+
+label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--cinza-texto-color);
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 95%;
+    padding: 12px;
+    border: 1px solid var(--borda-card);
+    border-radius: 5px;
+    background-color: var(--cinza-color);
+    color: var(--branco-color);
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--verde-color);
+    background-color: var(--cinza-fundo-color);
+}
+
+.botoes {
+    margin-top: 30px; 
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: var(--verde-color);
+    color: var(--preto-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 60%;
+}
+
+.btn:hover {
+    background-color: var(--cinza-color);
+    color: var(--branco-color);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .card {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    input, select {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

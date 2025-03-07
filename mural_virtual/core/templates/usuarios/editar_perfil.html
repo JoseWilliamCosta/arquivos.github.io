@@ -1,30 +1,40 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar-Perfil</title>
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="{% static 'css/editar_perf.css' %}">
 </head>
 <body>
-    <h2>Editar Perfil</h2>
-    <form method="post">
-        {% csrf_token %}
+    <div class="container">
+        <div class="card">
+            <h2>EDITAR PERFIL</h2>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Nome:</label>
+                    {{ form.username }}
+                </div>
 
-        <label for="{{ form.username.id_for_label }}">Nome:</label>
-        {{ form.username }}
-        <br/>
+                <div class="form-group">
+                    <label for="{{ form.tipo_usuario.id_for_label }}">Tipo de Usuário:</label>
+                    {{ form.tipo_usuario }}
+                </div>
 
-        <label for="{{ form.tipo_usuario.id_for_label }}">Tipo de Usuário:</label>
-        {{ form.tipo_usuario }}
-        <br/>
+                <div class="form-group">
+                    <label for="{{ form.curso.id_for_label }}">Curso:</label>
+                    {{ form.curso }}
+                </div>
 
-        <label for="{{ form.curso.id_for_label }}">Curso:</label>
-        {{ form.curso }}
-        <br/>
-
-    <button type="submit">Salvar Alterações</button>
-</form>
-    
-    
+                <div class="botoes">
+                    <button type="submit" class="btn salvar">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

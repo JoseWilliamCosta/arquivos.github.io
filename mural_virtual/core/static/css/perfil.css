@@ -1,0 +1,105 @@
+:root {
+    --verde-color: #91da31;
+    --cinza-color: #404143;
+    --preto-color: #1d1c1c;
+    --cinza-claro-color: #f5c6cb;
+    --branco-color: #fff;
+    --cinza-fundo-color: #222;
+    --cinza-texto-color: #ddd;
+    --vermelho-color: #e63946;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--preto-color);
+    color: var(--cinza-texto-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.card {
+    background-color: var(--cinza-fundo-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    min-width: 300px;
+}
+
+h1, h2 {
+    color: var(--branco-color);
+    margin-bottom: 30px;
+    font-size: 22px;
+    text-align: center;
+}
+
+p, li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.botoes, .nota-botoes {
+    display: flex;
+    gap: 30px;
+    padding: 15px;
+    margin-top: 15px;
+    justify-content: center;
+    text-align: center;
+}
+
+.btn {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 13px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.editar {
+    background-color: var(--verde-color);
+    color: var(--preto-color);
+}
+
+.voltar {
+    background-color: var(--cinza-color);
+    color: var(--branco-color);
+}
+
+.criar {
+    background-color: var(--verde-color);
+    color: var(--preto-color);
+}
+
+.excluir {
+    background-color: var(--vermelho-color);
+    color: var(--branco-color);
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+    }
+}
