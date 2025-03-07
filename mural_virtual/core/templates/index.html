@@ -39,38 +39,61 @@
                 {% block content %}
 
             {% if notas %}
-                <ul>
-                    {% for nota in notas %}
-                        <li>
-                            <h3>{{ nota.titulo }}</h3>
-                            {% if nota.imagem %}
-                                <img src="{{ nota.imagem.url }}" alt="Imagem da nota" style="max-width: 300px; height: auto;">
-                            {% endif %}
-                            <p id="resumo-{{ nota.id }}">
-                                {{ nota.descricao|slice:":280" }}{% if nota.descricao|length > 280 %}...{% endif %}
-                            </p>
-                            
-                            <!-- Texto completo (escondido inicialmente) -->
-                            <p id="completo-{{ nota.id }}" class="hidden">
-                                {{ nota.descricao }}
-                            </p>
-                            
-                            {% if nota.descricao|length > 280 %}
-                                <button onclick="toggleTexto('{{ nota.id }}')" id="btn-{{ nota.id }}">Ver mais</button>
-                            {% endif %}
-                            {% if nota.arquivo %}
-                                <p><a href="{{ nota.arquivo.url }}" target="_blank">📎 Baixar arquivo</a></p>
-                            {% endif %}
-                            <p><strong>Categoria:</strong> {{ nota.categoria }}</p>
-                            <p><strong>Criado por:</strong> {{ nota.usuario.username }} ({{ nota.usuario.get_tipo_usuario_display }})</p>
-                            <p><em>Publicado em: {{ nota.data_publicacao }}</em></p>
-                            {% if request.user == nota.usuario or request.user.is_superuser %}
-                            <a href="{% url 'criar_nota' nota.id %}">Editar</a>
-                            <a href="{% url 'excluir_nota' nota.id %}">Excluir</a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
+            <ul>
+                {% for nota in notas %}
+                    <li class="card-nota">
+                        <h3>{{ nota.titulo }}</h3>
+            
+                        {% if nota.imagem %}
+                            <img src="{{ nota.imagem.url }}" alt="Imagem da nota">
+                        {% endif %}
+            
+                        <p id="resumo-{{ nota.id }}">
+                            {{ nota.descricao|slice:":280" }}{% if nota.descricao|length > 280 %}...{% endif %}
+                        </p>
+            
+                        <p id="completo-{{ nota.id }}" class="hidden">
+                            {{ nota.descricao }}
+                        </p>
+            
+                        {% if nota.descricao|length > 280 %}
+                            <button onclick="toggleTexto('{{ nota.id }}')" id="btn-{{ nota.id }}" class="btn-ver-mais">Ver mais</button>
+                        {% endif %}
+            
+                        {% if nota.arquivo %}
+                            <a href="{{ nota.arquivo.url }}" target="_blank" class="btn-download">📎 Baixar arquivo</a>
+                        {% endif %}
+            
+                        <p><strong>Categoria:</strong> {{ nota.categoria }}</p>
+                        <p><strong>Criado por:</strong> {{ nota.usuario.username }} ({{ nota.usuario.get_tipo_usuario_display }})</p>
+                        <p><em>Publicado em: {{ nota.data_publicacao }}</em></p>
+            
+                        {% if request.user == nota.usuario or request.user.is_superuser %}
+                            <a href="{% url 'criar_nota' nota.id %}" class="btn-editar">Editar</a>
+                            <a href="{% url 'excluir_nota' nota.id %}" class="btn-excluir">Excluir</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            
+            <script>
+                function toggleTexto(id) {
+                    let resumo = document.getElementById("resumo-" + id);
+                    let completo = document.getElementById("completo-" + id);
+                    let botao = document.getElementById("btn-" + id);
+            
+                    if (resumo.style.display === "none") {
+                        resumo.style.display = "block";
+                        completo.style.display = "none";
+                        botao.textContent = "Ver mais";
+                    } else {
+                        resumo.style.display = "none";
+                        completo.style.display = "block";
+                        botao.textContent = "Ver menos";
+                    }
+                }
+            </script>
+            
             {% else %}
                 <p>Não há notas cadastradas ainda.</p>
             {% endif %}
