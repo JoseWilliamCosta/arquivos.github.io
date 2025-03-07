@@ -1,28 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Nota</title>
+    <link rel="stylesheet" href="{% static 'css/criar_n.css' %}">
 </head>
 <body>
-    {% block content %}
-    <h2>Criar Nota</h2>
+    <header>
+        <hr>
+    </header>
 
-{% if messages %}
-  {% for message in messages %}
-    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-      {{ message }}
+    <div class="container">
+        {% block content %}
+        <h2>CRIAR NOTA</h2>
+
+        {% if messages %}
+        <div class="alert-container">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+        {% endblock %}
     </div>
-  {% endfor %}
-{% endif %}
-
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Salvar Nota</button>
-</form>
-{% endblock %}
-
 </body>
 </html>
